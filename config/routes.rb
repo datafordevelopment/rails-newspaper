@@ -1,4 +1,10 @@
 Newspaper::Application.routes.draw do
+  resources :articles
+
+  resources :writers
+
+  match "sections/:name" => "section#show"
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

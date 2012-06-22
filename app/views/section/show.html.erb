@@ -1,0 +1,11 @@
+<h1><%= params[:name] %></h1>
+
+<ul class="article-list">
+  <% @articles.each do |article| %>
+    <li>
+      <h2><%= article.title %></h2>
+      <h3><%= article.writer %></h3>
+      <p class="snippet"><%= article.content.snippet %></p>
+    </li>
+  <% end %>
+</ul>
