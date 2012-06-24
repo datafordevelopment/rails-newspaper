@@ -1,0 +1,5 @@
+first_section:
+  name: Westgate News
+  writer_id: 1
+  created_at: <%= DateTime.current %>
+  updated_at: <%= DateTime.current %>

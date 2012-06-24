@@ -1,0 +1,10 @@
+first_article:
+  title: Student-Run Newspaper Gets Off the Ground
+  content: >
+    With the core staff gathered and the website development underway, Westgate's
+    student-run newspaper is well on its way to the first issue.
+  writer_id: 1
+  section_id: 1
+  created_at: <%= DateTime.current %>
+  updated_at: <%= DateTime.current %>
+

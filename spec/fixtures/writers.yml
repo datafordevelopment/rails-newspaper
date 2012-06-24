@@ -1,0 +1,5 @@
+first_writer:
+  name: Alan Rempel
+  email: alan.rempel@gmail.com
+  created_at: <%= DateTime.current %>
+  updated_at: <%= DateTime.current %>
