@@ -1,3 +1,8 @@
 class Article < ActiveRecord::Base
-  attr_accessible :section_id, :content, :title, :writer_id
+  attr_accessible :content, :title
+  belongs_to :section
+  belongs_to :writer
+
+  validates :content, presence: true
+  validates :title, presence: true
 end

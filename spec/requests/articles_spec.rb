@@ -2,12 +2,11 @@ require 'spec_helper'
 
 describe "Articles" do
 
-  fixtures :articles, :writers
   subject { "/articles/1" }
+  let(:first_article) { FactoryGirl.create(:article) }
   before { visit subject }
-  let(:first_article) { articles(:first_article) }
 
-  params = { id: 1 }
+  params = { id: "1" }
 
   it "should have some content" do
     page.should have_selector("div", :class => "article", text: first_article.content)

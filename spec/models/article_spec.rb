@@ -2,11 +2,10 @@ require 'spec_helper'
 
 describe Article do
 
-  fixtures :articles
-  subject { articles(:first_article) }
+  subject { FactoryGirl.create(:article) }
 
   describe "instance methods" do
-    [:content, :title, :writer_id, :section_id].each do |m|
+    [:content, :title, :section, :writer].each do |m|
       it { should respond_to m }
     end
   end

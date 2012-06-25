@@ -44,8 +44,17 @@ Spork.prefork do
 end
 
 Spork.each_run do
-  # This code will be run each time you run your specs.
+  # reload all factories
+  FactoryGirl.factories.clear
 
+  if File.exists?(factory_file = "#{::Rails.root}/spec/factories.rb")
+    load factory_file
+  end
+
+  Dir.glob("#{::Rails.root}/spec/factories/*.rb").each do |file|
+    load file.to_s
+  end
+  # This code will be run each time you run your specs.
 end
 
 # --- Instructions ---

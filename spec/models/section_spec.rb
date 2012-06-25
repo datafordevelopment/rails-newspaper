@@ -2,10 +2,9 @@ require 'spec_helper'
 
 describe Section do
 
-  fixtures :sections
-  subject { sections(:first_section) }
+  subject { FactoryGirl.create(:section) }
 
   it { should respond_to :name }
-  it { should respond_to :writer_id }
+  it { should respond_to :writer }
 
 end
