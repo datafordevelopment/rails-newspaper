@@ -1,4 +1,7 @@
 <h1><%= @article.title %></h1>
 <h2><%= @article.writer %></h2>
-
-<p><%= @article.content %></p>
+<div class="article-body">
+  <% @article.content.each_line do |paragraph| %>
+    <p><%= paragraph %></p>
+  <% end %>
+</div>
