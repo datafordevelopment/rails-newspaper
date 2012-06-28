@@ -2,22 +2,41 @@ require 'spec_helper'
 
 describe "Articles" do
 
-  subject { "/articles/1" }
-  let(:first_article) { FactoryGirl.create(:article) }
-  before { visit subject }
+  describe "/articles/1" do
+    
+    let(:first_article) { FactoryGirl.create(:article) }
+    before { visit "/articles/1" }
 
-  params = { id: "1" }
+    params = { id: "1" }
 
-  it "should have some content" do
-    page.should have_selector("div", :class => "article", text: first_article.content)
+    it "should have the article's content" do
+      page.should have_selector("div", :class => "article", text: first_article.content)
+    end
+
+    it "should have the name of the article" do
+      page.should have_selector("h1", text: first_article.title)
+    end
+
+    it "should display the writer of the article" do
+      page.should have_selector("h3", text: first_article.writer.name)
+    end
+
+    it "should have a sensible title" do
+      page.should have_selector("title", text: first_article.title)
+    end
+
   end
 
-  it "should have the name of the article" do
-    page.should have_selector("h1", text: first_article.title)
-  end
+  describe "/articles" do
 
-  it "should have a sensible title" do
-    page.should have_selector("title", text: first_article.title)
+    before { visit "/articles" }
+
+    it "should display all the articles" do
+      Article.all.each do |a|
+        page.should have_selector(".article-title", text: a.title)
+      end
+    end
+
   end
 
 end
