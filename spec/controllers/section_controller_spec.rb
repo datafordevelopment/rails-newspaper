@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe SectionController do
 
-  FactoryGirl.create(:article)
+  # FactoryGirl.create(:article)
   
   describe "'show' action" do
 

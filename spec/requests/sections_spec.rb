@@ -3,8 +3,8 @@ require 'spec_helper'
 describe "Sections" do
 
   before do
-    visit section_path(@section = FactoryGirl.create(:section))
-    FactoryGirl.create(:article)
+    visit section_path(@section = Section.first) # FactoryGirl.create(:section)
+    # FactoryGirl.create(:article)
   end
   subject { page }
 

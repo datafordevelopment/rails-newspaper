@@ -1,7 +1,8 @@
 class SectionController < ApplicationController
 
   def show
-    @articles = Article.find_all_by_section_id(params[:id].to_i)
+    @section = Section.find_by_name(params[:name])
+    @articles = Article.find_all_by_section_id(@section.id)
   end
 
 end

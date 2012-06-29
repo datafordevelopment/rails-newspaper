@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Section do
 
-  subject { FactoryGirl.build(:section) }
+  subject { Section.first } # FactoryGirl.build(:section)
 
   describe "instance methods" do
 

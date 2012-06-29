@@ -4,13 +4,14 @@ describe "Articles" do
 
   describe "/articles/1" do
     
-    let(:first_article) { FactoryGirl.create(:article) }
-    before { visit "/articles/1" }
+    let(:first_article) { Article.first } # FactoryGirl.create(:article)
+    before { visit articles_path(Article.first) }
 
     params = { id: "1" }
 
     it "should have the article's content" do
-      page.should have_selector("div", :class => "article", text: first_article.content)
+      page.should have_selector("div", :class => "article-content",
+                                text: first_article.content)
     end
 
     it "should have the name of the article" do
