@@ -3,14 +3,15 @@ require 'spec_helper'
 describe "Sections" do
 
   before do
-    visit section_path(@section = Section.first) # FactoryGirl.create(:section)
+    @section = Section.first
+    visit section_path(name: @section.name) # FactoryGirl.create(:section)
     # FactoryGirl.create(:article)
   end
   subject { page }
 
   it "should display all the articles in the named section" do
-    Article.find_all_by_section(@section).each do |article|
-      page.should have_selector("h2", text: article.title)
+    Article.find_all_by_section_id(@section.id).each do |article|
+      page.should have_selector("h3", text: article.title)
     end
   end
 

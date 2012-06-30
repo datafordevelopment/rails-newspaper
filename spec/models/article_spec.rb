@@ -31,7 +31,7 @@ describe Article do
       end
 
       it "should be of the right length" do
-        subject.snippet.length.should == 80
+        subject.snippet.length.should <= 80
       end
 
     end
@@ -45,9 +45,16 @@ describe Article do
     end
 
     [:content, :title].each do |a|
-      context "attribute #{a} is blank" do
+      context "when attribute #{a} is blank" do
         before { subject.send("#{a}=".to_sym, " ") }
         it { should_not be_valid }
+      end
+    end
+
+    context "when the title is the same as another's" do
+      it "should not be valid" do
+        copycat = Article.new(title: subject.title)
+        copycat.should_not be_valid
       end
     end
 

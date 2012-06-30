@@ -1,10 +1,10 @@
-<h1><%= @section.name %></h1>
+<h2><%= @section.name %></h2>
 
 <ul class="article-list">
   <% @articles.each do |article| %>
     <li>
-      <h2><%= article.title %></h2>
-      <h3><%= article.writer %></h3>
+      <h3><%= link_to article.title, article %></h3>
+      <h4><%= link_to article.writer.name, article.writer %></h4>
       <p class="article-snippet"><%= article.snippet %></p>
     </li>
   <% end %>

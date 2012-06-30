@@ -11,7 +11,7 @@
   <nav>
     <ul>
       <% Section.all.each do |section| %>
-        <li><%= link_to section.name, section %></li>
+        <li><%= link_to section.name, section_path(name: section.name) %></li>
       <% end %>
     </ul>
   </nav>

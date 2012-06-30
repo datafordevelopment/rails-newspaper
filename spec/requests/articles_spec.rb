@@ -5,17 +5,16 @@ describe "Articles" do
   describe "/articles/1" do
     
     let(:first_article) { Article.first } # FactoryGirl.create(:article)
-    before { visit articles_path(Article.first) }
+    before { visit article_path(Article.first) }
 
     params = { id: "1" }
 
     it "should have the article's content" do
-      page.should have_selector("div", :class => "article-content",
-                                text: first_article.content)
+      page.should have_content(first_article.content)
     end
 
     it "should have the name of the article" do
-      page.should have_selector("h1", text: first_article.title)
+      page.should have_selector("h2", text: first_article.title)
     end
 
     it "should display the writer of the article" do
@@ -34,7 +33,7 @@ describe "Articles" do
 
     it "should display all the articles" do
       Article.all.each do |a|
-        page.should have_selector(".article-title", text: a.title)
+        page.should have_selector('a', :class => "article-title", text: a.title)
       end
     end
 

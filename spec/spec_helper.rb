@@ -41,6 +41,12 @@ Spork.prefork do
     config.infer_base_class_for_anonymous_controllers = false
   end
 
+  FactoryGirl.factories.each do |factory|
+    if eval(factory.name.to_s.capitalize).all.length == 0
+      FactoryGirl.create(factory.name)
+    end
+  end
+
 end
 
 Spork.each_run do
@@ -54,7 +60,7 @@ Spork.each_run do
   Dir.glob("#{::Rails.root}/spec/factories/*.rb").each do |file|
     load file.to_s
   end
-  # This code will be run each time you run your specs.
+
 end
 
 # --- Instructions ---

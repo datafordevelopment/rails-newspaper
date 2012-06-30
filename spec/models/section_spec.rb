@@ -17,9 +17,16 @@ describe Section do
 
   describe "validations" do
 
-    context "the name is blank" do
+    context "when the name is blank" do
       before { subject.name = " " }
       it { should_not be_valid }
+    end
+
+    context "when the name is the same as another's" do
+      it "should not be valid" do
+        copycat = Section.new(name: subject.name)
+        copycat.should_not be_valid
+      end
     end
 
   end
